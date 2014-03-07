@@ -5,8 +5,8 @@ categories: tec
 ---
 
 
-two ways to resolve this problem:
-1. specific the way you encoding :
+#####two ways to resolve this problem:
+> 1 specific the way you encoding :
 
 {% highlight python %}
 #! /usr/bin/env python 
@@ -16,7 +16,7 @@ s = '中文'
 s.decode('utf-8').encode('gb18030') 
 {% endhighlight %}
 
-2. change sys.defaultencoding as your file's encoding :
+> 2 change sys.defaultencoding as your file's encoding :
 
 {% highlight python %}
 import sys 
