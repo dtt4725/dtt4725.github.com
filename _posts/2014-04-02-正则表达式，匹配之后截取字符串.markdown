@@ -1,0 +1,25 @@
+---
+layout: post
+title:  xpath实用的小结
+categories: automation
+---
+
+    str = '''< HTTP/1.1 500 Internal Server Error
+    < Server: nginx/0.7.65
+    < Date: Wed, 02 Apr 2014 05:05:04 GMT
+    < Content-Type: application/json;charset=utf-8
+    < Connection: keep-alive
+    < Status: 500 Internal Server Error
+    < Content-Length: 53
+    < X-Content-Type-Options: nosniff
+    {"error_code":90001,"error_message":"token_rejected"} '''
+    
+    
+	
+
+使用下面的方法能只取到 500
+
+    o = re.findall(r"< Status: (\d+) \D*\n",str)
+
+所以说，把自己想要的用（）括起来，
+这样就能在匹配的字符串中取到想要的东东
