@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  xpath实用的小结
+title:  正则表达式，匹配之后截取字符串
 categories: automation
 ---
 
