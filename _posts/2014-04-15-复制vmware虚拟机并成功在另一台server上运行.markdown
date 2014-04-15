@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  防止电脑休眠或者锁屏
+title:  复制vmware虚拟机并成功在另一台server上运行
 categories: tec
 ---
 
