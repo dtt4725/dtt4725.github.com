@@ -5,7 +5,7 @@ categories: automation
 ---
 
 
-在capybara里面，如果没有任何设置，那么css是默认的，如何更改：
+### 在capybara里面，如果没有任何设置，那么css是默认的，如何更改：
 Capybara.default_selector = :xpath
 
 ----------
@@ -13,37 +13,36 @@ Capybara.default_selector = :xpath
 
 -  检查page是否含有元素
 
+
 >     page.has_xpath? "//div[@id='ele']"
 >     or
 >     page.has_no_xpath?
 
-返回 true 或者 false
-
-实际上有很多
-
-       has_selector?(*args) 
-       has_no_selector?(*args)
-       has_xpath?(path, options={})
-       has_no_xpath?(path, options={})
-       has_css?(path, options={})
-       has_no_css?(path, options={})        has_text?(content)
-       has_content?(content)
-       has_no_text?(content)
-       has_no_content?(content)
-       has_link?(locator, options={})  (id,text, img alt)
-       has_no_link?(locator, options={})
-       has_button?(locator)  (id, name, value)
-       has_no_button?(locator)
-       has_field?(locator, options={})  (id, name , label)
-       has_no_field?(locator, options={})
-       has_checked_field?(locator)
-       has_no_checked_field?(locator)
-       has_unchecked_field?(locator)
-       has_no_unchecked_field?(locator)
-       has_select?(locator, options={})   (id,name,label)
-       has_no_select?(locator, options={})
-       has_table?(locator, options={})    (id or caption element within a tableelement )
-       has_no_table?(locator, options={})
+>     返回 true 或者 false
+>     实际上有很多
+>        has_selector?(*args) 
+>        has_no_selector?(*args)
+>        has_xpath?(path, options={})
+>        has_no_xpath?(path, options={})
+>        has_css?(path, options={})
+>        has_no_css?(path, options={})        has_text?(content)
+>        has_content?(content)
+>        has_no_text?(content)
+>        has_no_content?(content)
+>        has_link?(locator, options={})  (id,text, img alt)
+>        has_no_link?(locator, options={})
+>        has_button?(locator)  (id, name, value)
+>        has_no_button?(locator)
+>        has_field?(locator, options={})  (id, name , label)
+>        has_no_field?(locator, options={})
+>        has_checked_field?(locator)
+>        has_no_checked_field?(locator)
+>        has_unchecked_field?(locator)
+>        has_no_unchecked_field?(locator)
+>        has_select?(locator, options={})   (id,name,label)
+>        has_no_select?(locator, options={})
+>        has_table?(locator, options={})    (id or caption element within a tableelement )
+>        has_no_table?(locator, options={})
 
 
 - 点击一个元素， 如果没有这个元素会报错，所以最好先检查page有没有
@@ -51,10 +50,10 @@ Capybara.default_selector = :xpath
 >     find("css style is default one").click
 >     find(:xpath, "//div[@id='ele']").click
 
-返回一个元素
+>     返回一个元素
 
 - 得到一个元素的text
-> 
+
 >     <div id='ele'>abc</div>
 >     find(:xpath, "//div[@id='ele']").text   -返回abc
 
@@ -64,6 +63,7 @@ Capybara.default_selector = :xpath
 >     find(:xpath,"//div[contains(@class,'fb_preview')]")['src']
 
 - 得到page里面所有元素a的数量(all返回的是一个集合，所以可以用each遍历，得到每一个元素)
+
 >     <div class='oo'>pp</div>
 >     <div class='oo'>ee</div>
 >     <div class='oo'>rr</div>
@@ -72,12 +72,15 @@ Capybara.default_selector = :xpath
 >     返回4
 
 - 设置input/testarea的值
+
 >     find(:xpath, "//input[@id='id']").set "value"
 
 - 得到input里面输入的值
+
 >     find("input[name='name']").value
 
 - 选择select框的值
+
 >     find(:xpath, "//select[@name='age_min']").find(:xpath, "option[@value='#{age_start}']").select_option
 
 
@@ -111,24 +114,27 @@ Capybara.default_selector = :xpath
 >     page.driver.browser.action.move_to(resourceTable.native).perform
 
 - 清除缓存cookie
+
 >     Capybara.current_session.driver.reset!
 
 - 窗口最大化
+
 >     page.driver.browser.manage.window.maximize
 
 - 打开浏览器窗口
 
->     def self.open_browser
->      Capybara.register_driver :selenium do |app|
->       profile = Selenium::WebDriver::Firefox::Profile.new
->       profile['app.update.auto'] = false
->       profile['app.update.enabled'] = false
->       client = Selenium::WebDriver::Remote::Http::Default.new
->       client.timeout = 120 # seconds
->       Capybara::Selenium::Driver.new(app, :profile =profile, :http_client =client)
->      end
->     end
-
+{% highlight ruby %}
+     def self.open_browser
+      Capybara.register_driver :selenium do |app|
+       profile = Selenium::WebDriver::Firefox::Profile.new
+       profile['app.update.auto'] = false
+       profile['app.update.enabled'] = false
+       client = Selenium::WebDriver::Remote::Http::Default.new
+       client.timeout = 120 # seconds
+       Capybara::Selenium::Driver.new(app, :profile =profile, :http_client =client)
+      end
+     end
+{% endhighlight %}
 
 - 启动headless, 也就是启动后台运行，在这里还设置了虚拟的窗口大小
 
@@ -137,15 +143,16 @@ Capybara.default_selector = :xpath
 >     headless.start
 
 - 访问一个页面
-    
-
+   
 >     visit 'http://www.linkedin.com'
 
 
 - 执行一段script
+
 >     page.execute_script("$('#channel_filters_scroll').css('overflow','');")
 
 - 拖拽
+
 >     把这个filter的下拉条从0的位置拖拽到50
 >     bar = find(:xpath, "//select[@id='filter']/下拉条")
 >     page.driver.browser.action.drag_and_drop_by(bar.native,0,50).perform
@@ -153,6 +160,7 @@ Capybara.default_selector = :xpath
 >     bar.drag_to 'another element'
 
 - 忽略隐藏的element, 默认是忽略
+
 >     Capybara.ignore_hidden_elements = true
 
 
@@ -167,24 +175,28 @@ Capybara.default_selector = :xpath
 
 
 - 默认超时时间
+
 >     Capybara.default_timeout 
 
 - 设置默认访问的url
+
 >     Capybara.app_host = ''
 >     设置好了之后直接visit '/' 即可
 >     也可以用 visit '/post' 等访问子页面
 
 
 - 查看某个元素是否可见
+
 >     find('.section').visible?
 
 
 ----------
 
 
-* capybara里面的一些简易用法（但是貌似不是那么好用啊）
+### *capybara里面的一些简易用法（但是貌似不是那么好用啊）
 
 - link and button:
+
 >     click_link_or_button
 >     click_on
 >     click_link
@@ -197,6 +209,7 @@ Capybara.default_selector = :xpath
 
 
 - input
+
 >     fill_in 'Forename', :with ='Matthew'
 >     which fill_in 'xxx' is:
 >     The id attribute of the input element
@@ -205,6 +218,7 @@ Capybara.default_selector = :xpath
 
 
 - select
+
 >     select 'Mr', :from ='title'
 >     unselect 'Mr', :from ='title'
 >     idand name attributes, to locate the element 
@@ -212,13 +226,16 @@ Capybara.default_selector = :xpath
 
 
 - radio button
+
 >     choose 'Over 16' (id, name)
 
 - checkbox
+
 >     check 'consent' (id, name)
 >     uncheck ....
 
 - within 
+
 >     within_fieldset – The first argument should be the id or legend attribute within a form fieldset element
 >     within_table – The first argument should be the id or caption attribute within a table element
 >     within_frame(frame_id) – The first argument should be the id value of aniframe element (selected drivers, for example, Selenium)
@@ -226,6 +243,7 @@ Capybara.default_selector = :xpath
 
 
 - *find 
+
 >     find_field: This finder searches for form fields by the related labelelement, or the name/id attribute
 >     field_labeled: This finder is the same as find_field
 >     find_link: This finder finds an anchor or an image link using the text,id, or img alt attribute
@@ -234,55 +252,17 @@ Capybara.default_selector = :xpath
 
 
 
-- *一个很好的例子，超时和yield的应用
+### *一个很好的例子，超时和yield的应用
 
->     def wait_for(wait = 8)
->       timeout = Time.new + wait
->       while (Time.new < timeout)
->        return if (yield)
->       end
->       raise "Condition not met within #{wait} seconds"
->     end
->     
->     wait_for(10) { find('.section').visible? }
+{% highlight ruby %}
+     def wait_for(wait = 8)
+       timeout = Time.new + wait
+       while (Time.new < timeout)
+        return if (yield)
+       end
+       raise "Condition not met within #{wait} seconds"
+     end     
+     wait_for(10) { find('.section').visible? }
+{% endhighlight %}
 
-
-
-### 自动化部分（selenium / capybara / watir ....）
-
-
-> 1. 将网站按页面来分类（适用于每个页面功能较独立的情况）。
-> 2. 将每个页面看做一个类， 这个类里面应该包含该页面各个元素，以及操作这些元素的方法。 如果页面中的一个功能需要在页面操作若干元素来完成，那么这也应该转化成一个方法定义在该页面的类里。
-> 3. 将一些公用的功能组织成公用的方法放在一个common类里， 例如登陆。
-> 4. 将类中的方法组织成用例，就成为自动化的Case。 这个case应该是类似自然语言的， 换句话说，如果一个不会写代码的人拿到类中的方法，他应该能组织这些方法写出一个case。
-> 5. 最重要的验证部分一定不要落下。
-
-
-### case管理部分 （testng / junit / rspec ...）
-
-
-> 其实这一部分比较依赖工具，如果自己实现的话可能比较麻烦， 目前用的比较好的果断是testng，能够实现下面列的所有需求。其他的诸如rspec就比较弱了，很多功能不支持，可能主要受众是开发吧。
-> 
-> 1. 能够运行所有case，或者按需单独运行某些指定case。
-> 2. 能够记录case的运行结果，能够单独运行上次执行失败的case。
-> 3. 能够很好的组织case的输入以及预期结果。
-> 4. 测试报告（主要给老板看的， testng的报告经过美化后相当顶用，老板笑呵呵，以后分享美化方法）。
-
-
-### 持续集成 (cruise control / jenkins)
-
-
-> 1. 自动化应该是自运行，可以每天定点执行。
-> 2. 可能会需要使用ant之类的定义具体运行步骤， 持续集成工具可能还不好操控吧。
-> 3. 保存测试结果和测试报告，严重的bug可以通过邮件等手段通知测试人员。
-
-
----
-
-### 一些建议
-
-
-> 1. 统一元素的定位方式， 尽量都使用xpath或者css来定位。
-> 2. 一个case尽量就验证一个主要的点，case之间最好是相互独立的。
-> 3. 在每个Case运行前后（根据实际需要）清理缓存，恢复环境。
 
