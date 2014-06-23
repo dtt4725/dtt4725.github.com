@@ -1,22 +1,14 @@
 ---
 layout: page
 permalink: /about/index.html
-title: About GirlieMac
-tagline: History of GirlieMac web
+title: About DTT
+tagline: About Me
 tags: [about]
-modified: 12-26-2013
 ---
 
-The original website was launched in 1996, started as “Tomomi’s Nerdy Web”, then renamed to "Girlie Macintosh!", when the site got some popularity, and finally settled as GirlieMac! with the domain name later in the early 2000s. The initial purpose of the web site was to distribute cute icons I created and my original Kaleidoscope schemes to customize MacOS interface. It was fun to involve awesome Mac communities at that time. I remember that we, Mac community members tried to support then-dying Apple by buying some AAPL stocks. I paid $25/share. It was before, or around Steve's come back.
 
-I graduated from college, got a job as a microbiology research assistant, went to grad school at night, quit the biology career, joined a tech startup in Cambridge, MA, lost the job after the dot-com bust... I went though some tough time. And GirlieMac! went into dormant state between 2002 - 2007. 
+I graduated from HuNan University, start my QA job in Beijing Join Cheer software company. I'm just a new guy at that time, but my manager trust me and let me config and manage Jira for the whole company, I really learned a lot, also I love test&file bugs from there. Anyway, I need to work overtime nearly every and it's not a good thing for me, I met my (last^^) bf there and then god married~, that's sweet memory. Then at 2011 I joined Symantec as Assoc software engineer, work in SORT team and become QA engineer next year, I love this company ,it gave me a platform to express my technology but not limit my work time, it's the first time I feel I can have a good job + a good life in the same time. Also I learned Automation testing here and become one major member in Auto team. although change role as a 'foreign guy' is not a easy thing for me, I got 'Outstanding' in my 2013's personal review, I think it's the best award for my effort. I left Symantec at the end of 2013, in order to have a better personal development I joined Oracle SRM team, switch to a new&young team, change from Java to Ruby, start to use github manage code, so many dificulties at the first time, but thank god I found my own pace now and I know I must keep learning... 
 
-By the time, I decided to revive my web site, Apple was no longer a dying company. I sold AAPL at $50 in 2005, when I needed some cash to move to San Francisco. ($50!!! How stupid am I?)
 
-My career path was back in the track, then started involoved in mobile industry since late 2005, and in 2007, Apple's iPhone release made me decide to revive GirlieMac! with iPhone related topics. That was the time I transformed my web pages as a blog on WordPress.
-
-Since then, my blog has become more of general web technology blog rather than Apple-related, as my career as a web developer had matured.
-
-In the end of 2013, I got sick of writing HTML of tech articles, I decided to set up Jekyll on my Github and start writing articles in markdown.
 
 
