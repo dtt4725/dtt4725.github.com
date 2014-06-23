@@ -1,7 +1,7 @@
 ---
 layout: post-index
 permalink: /blog/
-title: Articles Archive
+title: Blog
 tagline: A List of Posts
 tags: [blog]
 ---
