@@ -1,0 +1,72 @@
+---
+layout: post
+title:  xpath实用的小结
+categories: automation
+---
+
+
+概念
+
+    //	从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。
+    .	选取当前节点。
+	@	选取属性。
+	*	匹配任何元素节点。
+	@*	匹配任何属性节点。
+	node()	匹配任何类型的节点。	
+	|	选取若干路径
+	ancestor	选取当前节点的所有先辈（父、祖父等）。
+	ancestor-or-self	选取当前节点的所有先辈（父、祖父等）以及当前节点本身。
+	attribute	选取当前节点的所有属性。
+	child	选取当前节点的所有子元素。
+	descendant	选取当前节点的所有后代元素（子、孙等）。
+	descendant-or-self	选取当前节点的所有后代元素（子、孙等）以及当前节点本身。
+	following	选取文档中当前节点的结束标签之后的所有节点。
+	following-sibling	选取当前节点之后的所有同级节点。
+	namespace	选取当前节点的所有命名空间节点。
+	parent	选取当前节点的父节点。
+	preceding	选取文档中当前节点的开始标签之前的所有节点。
+	preceding-sibling	选取当前节点之前的所有同级节点。
+	self	选取当前节点。
+
+----------
+
+例子
+
+	//book/title | //book/price	选取 book 元素的所有 title 和 price 元素。
+	//title | //price	选取文档中的所有 title 和 price 元素。
+	//title[@lang] 	 选取<title>标签里的lang属性
+	child::book	选取所有属于当前节点的子元素的 book 节点。
+	attribute::lang	选取当前节点的 lang 属性。
+	child::*	选取当前节点的所有子元素。
+	attribute::*	选取当前节点的所有属性。
+	child::text()	选取当前节点的所有文本子节点。
+	child::node()	选取当前节点的所有子节点。
+	descendant::book	选取当前节点的所有 book 后代。
+	ancestor::book	选择当前节点的所有 book 先辈。
+	ancestor-or-self::book	选取当前节点的所有 book 先辈以及当前节点（如果此节点是 book 节点）
+	child::*/child::price	选取当前节点的所有 price 孙节点。
+	//h3[text()='"+sectionName+"']	text的用法
+	//h3[text()='ooo']/preceding-sibling::div	h3下面的text=ooo的节点的之前同级节点的div
+	//div[@id='id' and text()!='loading...']	and的用法
+	//a/div[text()='LOGIN' or text()= '\u767B\u5F55']	or的用法
+	//a[div[2][text()='Survey']	第二个div
+	//preceding-sibling::td/input[@name='rplist']	
+	//*[starts-with(name(),'W')] 	选择所有名称以"W"起始的元素 
+	//*[string-length(name()) < 2] 	选择名字长度小于2的元素; 
+	//B[not(@*)] 	选择没有属性的B元素 
+	//*[count(B)=2] 	选择含有2个B子元素的元素 
+
+
+----------
+
+
+关于包含
+
+	//*[contains(.,'Save as PDF')]	查找全文本是不是包含指定字符串
+	//a[contains(@href,'/logout')]	查找<a 开头的 属性href里面包含 /logout的节点
+	//label[span[normalize-space(text())='On']][contains(@class,'selected')]	span里面的text去掉前后空格后等于On, 并且class名包含selected
+	//div[@class='small_gadget'][not(contains(@style,'display: none;'))]	not contain的用法
+
+其他一些常见的函数
+
+[http://www.w3school.com.cn/xpath/xpath_functions.asp](http://www.w3school.com.cn/xpath/xpath_functions.asp)
