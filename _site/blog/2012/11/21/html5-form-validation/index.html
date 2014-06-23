@@ -1,0 +1,395 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Creating A Custom HTML5 Form Validation &#8211; GirlieMac Blog</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/default-thumb.png">
+<meta name="twitter:title" content="Creating A Custom HTML5 Form Validation">
+<meta name="twitter:description" content="Arbitrary Web and Mobile Writing by Tomomi Imura">
+<meta name="twitter:creator" content="@girlie_mac">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Creating A Custom HTML5 Form Validation">
+<meta property="og:description" content="Arbitrary Web and Mobile Writing by Tomomi Imura">
+<meta property="og:url" content="/blog/2012/11/21/html5-form-validation/">
+<meta property="og:site_name" content="GirlieMac Blog">
+
+<!-- Webmaster Tools verfication -->
+<meta name="google-site-verification" content="I-NDFBl5t1P9fqHmRNZhwu8OOHmwW4HADPiOr_r16cE">
+
+
+
+<link rel="canonical" href="/blog/2012/11/21/html5-form-validation/">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title=" Feed">
+
+
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Webfonts -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.min.css">
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+<link rel="stylesheet" href="/assets/css/ie.min.css">
+<![endif]-->
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="/assets/js/vendor/modernizr/modernizr.js"></script>
+
+<!-- Icons -->
+
+<!-- favicon -->
+<link rel="shortcut icon" href="/assets/ico/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144x144-precomposed.png">
+
+
+</head>
+
+<body class="article" itemscope itemtype="http://schema.org/WebPage">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="/index.html">GirlieMac.com</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+		    <ul>
+		        
+				<li><a href="/about" >About</a></li>
+		        
+				<li><a href="/blog" >Archive</a></li>
+		        
+				<li><a href="/presentations" >Preso</a></li>
+		        
+				<li><a href="http://codepen.io/girliemac" target="_blank">My CodePen</a></li>
+		        
+				<li><a href="/nostalgia" >Nostalgia</a></li>
+		        
+		        <li><i class="icon-feed"></i> <a href="/feed.xml" title="Atom/RSS feed">Feed</a>
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+<header role="banner">
+</header>
+
+<div id="main" role="main" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/Blog">
+  <div class="article-author-side">
+  	<img src="/assets/images/avatar.jpg" class="bio-photo" alt="Tomomi Imura">
+    <h3>Tomomi Imura</h3>
+<p>An Open Web advocate and front-end engineer, who loves everything mobile, and writes about HTML5, CSS, JS, UX, tech events, gadgets, etc. She unintentionally got 15min of fame by creating The HTTP Status Cats. Also, the opinions expressed here are solely her own and do not express the views or opinions of my employer.</p>
+<a href="http://twitter.com/girlie_mac" class="author-social" target="_blank"><i class="icon-twitter"></i> Twitter</a>
+
+
+<a href="http://linkedin.com/in/tomomi" class="author-social" target="_blank"><i class="icon-linkedin"></i> LinkedIn</a>
+
+<a href="http://github.com/girliemac" class="author-social" target="_blank"><i class="icon-github"></i> Github</a>
+
+
+<a href="http://flickr.com/photos/girliemac" class="author-social" target="_blank"><i class="icon-flickr"></i> Flickr</a>
+  </div>
+  
+  <article itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+    <div class="headline-wrap">
+      
+      <time datetime="2012-11-21T00:00:00-08:00" itemprop="datePublished"><i class="icon-calendar"></i> November 21, 2012</time>
+      
+      
+      <h1 itemprop="name">Creating A Custom HTML5 Form Validation</h1>
+      <h2></h2>
+    </div><!--/ .headline-wrap -->
+    
+    <div class="article-wrap" itemprop="text">
+      <p><em>Note: The article was originally written for <a href="http://www.developer.nokia.com/Blogs/Code/2012/11/21/creating-a-custom-html5-form-validation/">Nokia Code Blog</a>, with helps from Fred Patton (editor) and Andrea Trasatti (proofreading).</em></p>
+
+<hr>
+
+<p>In his blog post on <a href="http://www.developer.nokia.com/Blogs/Code/2012/11/09/html5-forms-and-ie10-mobile/">HTML5 forms and IE10 Mobile</a>, Andrea explained HTML5 forms and what is new in Internet Exporer 10 Mobile, so you should now have some understanding of HTML5 form validation. To summarize, HTML5 eases the pain of writing extra logic to validate users’ form inputs, letting you create usable forms with a little or no scripting.</p>
+
+<p>In this tutorial, I will show you a practical example of creating a custom validated form  with CSS3, web fonts, and a bit of JavaScript (or not).</p>
+
+<p>First of all, creating a form field with a simple empty field validation is extremely easy. All you need to do is including required attribute in <code>&lt;input&gt;</code>.</p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;form&gt;</span> 
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">required</span><span class="nt">&gt;</span> 
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;Submit&quot;</span><span class="nt">&gt;</span> 
+<span class="nt">&lt;/form&gt;</span> 
+</code></pre></div>
+<p><a href="http://jsfiddle.net/girlie_mac/X6Uuc/">Try this simplest form validation demo</a>. When you attempt to submit the form with the required field empty, the supported browsers display an error indication (with message, or just a visual indication).</p>
+
+<p>These are the screenshots of default error UI from IE10 (desktop) and IE10 Mobile:  </p>
+
+<p><img style="vertical-align: top" src="/assets/images/articles/2012/12/screenshot-basic-ie10.png" alt="Basic form validation (IE10)" width="255" height="125" /> <img style="vertical-align: top;margin: 9px 0 0 20px" src="/assets/images/articles/2012/12/screenshot-basic-ie10m.png" alt="Basic form validation (IE10 Mobile)" width="250" height="68" />  </p>
+
+<p>In IE10 Mobile, you do not get the &quot;speech bubble&quot; error message, but the field is focused with red borders while the visual keyboard is popped up, so you know the field needs  attention.</p>
+
+<p>The error message text and its UI vary depending on browsers and language settings. The screenshot below is Chrome running on the MacOS with Japanese as the primary language:</p>
+
+<p><img src="/assets/images/articles/2012/12/screenshot-basic-chrome-jp.png" alt="Basic form validation (Chrome JP)" width="301" height="96" /></p>
+
+<p>OK, this looks good enough, but let’s make it more interesting by customizing it using 1) pattern matching, 2) CSS3 visual effects, and 3) custom error messages.</p>
+
+<h2>Pattern Matching</h2>
+
+<p>The <code>pattern</code> attribute specifies a regular expression against the control’s value. Here’s a simple regular expression to detect text that is 6 to 12 alphanumeric characters long.</p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;form&gt;</span> 
+  <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;username&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">pattern=</span><span class="s">&quot;[a-zA-Z0-9_-]{6,12}&quot;</span> <span class="na">autofocus</span> <span class="na">required</span><span class="nt">&gt;</span> 
+  <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;submit&quot;</span> <span class="na">type=</span><span class="s">&quot;submit&quot;</span> <span class="na">value=</span><span class="s">&quot;create&quot;</span><span class="nt">&gt;</span> 
+<span class="nt">&lt;/form&gt;</span> 
+</code></pre></div>
+<p><a href="http://jsfiddle.net/girlie_mac/qe62z/">Try this demo with the pattern attribute</a> by submitting an invalid query. For example, type “123″ and hit “Create” button and see what happens.</p>
+
+<h2>CSS3 User Interface Selectors</h2>
+
+<p>There are a number of <em>user interface state pseudo-classes</em> in CSS. In additional to <code>:hover</code>, <code>:active</code>, etc., there are more pseudo-classes defined, such as <code>:valid</code>, <code>invalid</code>, <code>in-range</code>, <code>out-of-range</code>, <code>required</code>, optional, <code>read-only</code> and <code>read-write</code>.</p>
+
+<p>Let’s color the field input depending on the state. The text will appear red when the entry is invalid, and green when it is valid.</p>
+<div class="highlight"><pre><code class="css language-css" data-lang="css"><span class="nd">:valid</span> <span class="p">{</span>
+    <span class="k">color</span><span class="o">:</span> <span class="nb">green</span><span class="p">;</span>
+<span class="p">}</span> 
+<span class="nd">:invalid</span> <span class="p">{</span>
+    <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+<span class="p">}</span> 
+</code></pre></div>
+<p><a href="http://jsfiddle.net/girlie_mac/Db7kg/">Try this demo</a> to see how the CSS takes effect.</p>
+
+<h2>More Visual Effects with Web Font Icon</h2>
+
+<p>Now, we are going to display an extra visual indication with a green checkmark icon. Instead of using an image, let’s experiment with CSS3 web font capabilities.</p>
+
+<p><img src="/assets/images/articles/2012/12/screenshot-valid-fonticon.png" alt="using webfont icon" width="269" height="73" /></p>
+
+<p>Before proceeding, if you are not familiar with CSS3 web fonts, please read the articles linked at the end of this blog.</p>
+
+<p>There are many free web fonts out there, as well as some icon fonts you can use for free. In this demo, I used the Iconic font from <a href="http://icomoon.io/">IcoMoon</a>. The great thing about using IcoMoon is that the <a href="http://icomoon.io/app/">IcoMoon App</a> lets you can choose only the icons you need to use, and package them into a lightweight file.</p>
+
+<p>Once you get the web fonts, upload all the font formats in a one place somewhere on your server with your HTML files, and include the @font-face rule in your CSS file.</p>
+<div class="highlight"><pre><code class="css language-css" data-lang="css"><span class="k">@font-face</span> <span class="p">{</span>
+    <span class="nt">font-family</span><span class="o">:</span> <span class="s1">&#39;iconic&#39;</span><span class="o">;</span>
+    <span class="nt">src</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="s1">&#39;webfonts/iconic.eot&#39;</span><span class="o">);</span>
+    <span class="nt">src</span><span class="o">:</span> <span class="nt">url</span><span class="o">(</span><span class="s1">&#39;webfonts/iconic.eot?#iefix&#39;</span><span class="o">)</span> <span class="nt">format</span><span class="o">(</span><span class="s1">&#39;embedded-opentype&#39;</span><span class="o">),</span>
+         <span class="nt">url</span><span class="o">(</span><span class="s1">&#39;webfonts/iconic.svg#iconic&#39;</span><span class="o">)</span> <span class="nt">format</span><span class="o">(</span><span class="s1">&#39;svg&#39;</span><span class="o">),</span>
+         <span class="nt">url</span><span class="o">(</span><span class="s1">&#39;webfonts/iconic.woff&#39;</span><span class="o">)</span> <span class="nt">format</span><span class="o">(</span><span class="s1">&#39;woff&#39;</span><span class="o">),</span>
+         <span class="nt">url</span><span class="o">(</span><span class="s1">&#39;webfonts/iconic.ttf&#39;</span><span class="o">)</span> <span class="nt">format</span><span class="o">(</span><span class="s1">&#39;truetype&#39;</span><span class="o">);</span>
+    <span class="nt">font-weight</span><span class="o">:</span> <span class="nt">normal</span><span class="o">;</span>
+    <span class="nt">font-style</span><span class="o">:</span> <span class="nt">normal</span><span class="o">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Now, using a CSS trick, add the icon when the entry is in the <code>:valid</code> state, with using the <code>::before</code> (or <code>::after</code>) pseudo-element to insert some content before (or after) the content of an element.</p>
+
+<p>To display the icon after the input field, I am tempted to just use pseudo-class and pseudo-element all together like, <code>input:valid::after</code>, However, it is not possible to add contents to the input with the CSS, since input has no document tree content. Therefore, I needed to use an extra element after the input like this:</p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;username&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">pattern=</span><span class="s">&quot;[a-zA-Z0-9_-]{6,12}&quot;</span> <span class="na">autofocus</span> <span class="na">required</span><span class="nt">&gt;</span>
+<span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;icon-validation&quot;</span> <span class="na">data-icon=</span><span class="s">&quot;&amp;#xe000&quot;</span><span class="nt">&gt;&lt;/span&gt;</span> 
+</code></pre></div>
+<p>In the <code>span</code>, I am using a <code>data-</code> attribute to specify which character to insert. In this case, I am using <code>data-icon</code> attribute to hold the special font character that I used IcoMoon to map.</p>
+<div class="highlight"><pre><code class="css language-css" data-lang="css"><span class="nd">:valid</span> <span class="o">+</span> <span class="nc">.icon-validation</span><span class="o">:</span><span class="nd">:before</span> <span class="p">{</span>
+    <span class="k">content</span><span class="o">:</span> <span class="n">attr</span><span class="p">(</span><span class="n">data</span><span class="o">-</span><span class="k">icon</span><span class="p">);</span>
+    <span class="k">color</span><span class="o">:</span> <span class="nb">green</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The custom data attributes (<code>data-*</code>) in HTML5 is used to store a small private data and retained minimal state on DOM.
+You can insert the character directly into the content property of the <code>::before</code> pseudo-element in the CSS instead, however, I recommend using the data binding technique with the <code>data-*</code> to make your code more semantic.</p>
+
+<h2>Customizing the Error Text</h2>
+
+<p>There’s the easy way to customize the message text, and then there’s the easier way.</p>
+
+<p>The easier way is adding inline text with title attribute. The text will be appended after the default error message. The screenshot below is from Opera 12:</p>
+
+<p><img class="alignnone size-full wp-image-329" src="/assets/images/articles/2012/12/screenshot-custom-opera12.png" alt="" width="500" height="150" /></p>
+<div class="highlight"><pre><code class="html language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;username&quot;</span> <span class="na">type=</span><span class="s">&quot;text&quot;</span> <span class="na">pattern=</span><span class="s">&quot;[a-zA-Z0-9_-]{6,12}&quot;</span> <span class="na">autofocus</span> <span class="na">required</span> 
+       <span class="na">title=</span><span class="s">&quot;must be alphanumeric in 6-12 chars&quot;</span><span class="nt">&gt;</span> 
+</code></pre></div>
+<p><a href="http://jsfiddle.net/girlie_mac/vuP4n/">Try this demo</a> to see how this takes in effect.</p>
+
+<p>If you would like to fully customize the error message, you need a little DOM scripting help.
+The setCustomValidity method allows you to set a custom text by changeing the validationMessage property of the DOM node that contains the message.</p>
+
+<p>When the input is checked by checkValidity method on a form element node, and found to be invalid, the invalid event is fired for the node. So you can add the event listener to check if the input is either empty or the value is mismatched.</p>
+<div class="highlight"><pre><code class="javascript language-javascript" data-lang="javascript"><span class="nx">input</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;invalid&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">validity</span><span class="p">.</span><span class="nx">valueMissing</span><span class="p">){</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">setCustomValidity</span><span class="p">(</span><span class="s2">&quot;PLZ CREATE A USERNAME, YO!&quot;</span><span class="p">);</span> 
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">input</span><span class="p">.</span><span class="nx">validity</span><span class="p">.</span><span class="nx">valid</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">setCustomValidity</span><span class="p">(</span><span class="s2">&quot;U R DOIN IT WRONG!&quot;</span><span class="p">);</span> 
+    <span class="p">}</span> 
+<span class="p">},</span> <span class="kc">false</span><span class="p">);</span>
+</code></pre></div>
+<p>This is how it looks in Firefox 16.</p>
+
+<p><img src="/assets/images/articles/2012/12/screenshot-custom-ff16.png" alt="" width="250" height="121" /></p>
+
+<p>The <code>validity</code> property returns a <code>ValidityState</code> object, which contains properties that describe the state (boolean) of validation on an element, such as, value, <code>valueMissing</code>, <code>typeMismatch</code>, etc. (If you would like to learn more about <code>ValidityStat</code>e object, I list some links at the end of this article).</p>
+
+<p><a href="http://jsfiddle.net/girlie_mac/te3Qd/">Try this demo</a> to see how it takes effect. I also encourage you to fork the code to play with other <code>ValidityState</code> object states.</p>
+
+<p>You can use both the JavaScript and <code>title</code> attribute together. Try it by yourself.</p>
+
+<h2>Put Them All Together</h2>
+
+<p>I have put together <a href="https://dl.dropbox.com/u/1330446/validation.html">a full demo</a> with extra styles to mimic the Windows Phone 8 UI, so try it on mobile too!</p>
+
+<p><a href="https://dl.dropbox.com/u/1330446/validation.html"><img src="/assets/images/articles/2012/12/form-val-demo-qr.png" alt="Demo URL QR" width="128" height="127" align="right" /></a><br>
+<strong>http://goo.gl/xKj0X</strong></p>
+
+<p>These is a little gotcha in IE10 mobile with the icon next to the field—it does not display until the field it unfocused, while on other browsers I have tested, it shows up immediately once the query becomes valid (in this case, when the numbers of the character hits 6).</p>
+
+<p>These are actual screenshots from IE Mobile:</p>
+
+<p><img src="/assets/images/articles/2012/12/screenshot-ie10m.png" alt="screenshot of IE10 mobile" width="600" height="410" /></p>
+
+<h2>Learn More</h2>
+
+<ul>
+<li>  WebPlatform.org: <a href="http://docs.webplatform.org/wiki/guides/html5_form_features" target="_blank">HTML5 form features</a></li>
+<li>  Dive Into HTML5: <a href="http://diveintohtml5.info/forms.html" target="_blank">A Form of Madness</a></li>
+<li>  W3C: <a href="http://www.w3.org/TR/css3-fonts/" target="_blank">CSS Fonts Module Level 3</a></li>
+<li>  Six Revisions: <a href="http://sixrevisions.com/css/font-face-guide/" target="_blank">The Essential Guide to @font-face</a></li>
+<li>  WebPlatform.org: <a href="http://docs.webplatform.org/wiki/css/selectors/pseudo-elements" target="_blank">Pseudo-elements</a></li>
+<li>  MSDN: <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh466212.aspx" target="_blank">ValidityState object</a></li>
+</ul>
+
+      <hr>
+      
+      <!-- Pagination -->
+      <ul class="pagination">
+	      
+	        <li class="prev"><a href="/blog/2012/11/09/html5-dev-conf-slides/" rel="prev">&larr; HTML5 Dev Conf Slides</a></li>
+	      
+	      
+	        <li class="next"><a href="/blog/2012/12/01/html5-form-validation-jp/" rel="next">HTML5 Form Validation のカスタマイズ &rarr;</a></li>
+	      
+	  </ul>
+	  
+      <hr style="visibility:hidden;">
+      
+      <!-- Categories -->
+      
+	  <ul class="categories">
+	      <li><i class="icon-drawer"></i></li>
+	      
+	      
+	      
+		     
+		    	<li data-size="27"><a href="/categories/#css">
+		    		css
+		    	</a></li>
+		     
+		    	<li data-size="19"><a href="/categories/#firefox">
+		    		firefox
+		    	</a></li>
+		     
+		    	<li data-size="20"><a href="/categories/#html5">
+		    		html5
+		    	</a></li>
+		     
+		    	<li data-size="7"><a href="/categories/#ie">
+		    		ie
+		    	</a></li>
+		     
+		    	<li data-size="3"><a href="/categories/#japanese">
+		    		japanese
+		    	</a></li>
+		     
+		    	<li data-size="16"><a href="/categories/#mobile">
+		    		mobile
+		    	</a></li>
+		     
+		    	<li data-size="17"><a href="/categories/#nokia">
+		    		nokia
+		    	</a></li>
+		     
+		    	<li data-size="12"><a href="/categories/#opera">
+		    		opera
+		    	</a></li>
+		     
+		    	<li data-size="13"><a href="/categories/#ui/ux">
+		    		ui/ux
+		    	</a></li>
+		     
+		    	<li data-size="33"><a href="/categories/#webkit">
+		    		webkit
+		    	</a></li>
+		    
+		  
+	      
+	  
+	  </ul>
+	   
+	  
+	  <!-- Disqus -->
+	      <div id="disqus_thread" style="margin-top: 3em"></div>
+		    <script type="text/javascript">
+		        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		        var disqus_shortname = 'girliemac'; // required: replace example with your forum shortname
+				
+				
+		        /* * * DON'T EDIT BELOW THIS LINE * * */
+		        (function() {
+		            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		        })();
+		    </script>
+		    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">
+	  
+    </div><!-- /.article-wrap -->
+  </article>
+</div><!-- /#main -->
+
+<footer> 
+  <small class="copyright">
+    <span>&copy; 2014 Tomomi Imura. Powered by <a href="http://jekyllrb.com">Jekyll</a> with modified <em>Minimal Mistakes</em> theme. Hosted on <a href="http://github.com">Github</a>.
+  </small>
+</footer>
+
+<script src="/assets/js/scripts.min.js"></script>
+
+<!-- Asynchronous Google Analytics snippet -->
+<script>
+  var _gaq = _gaq || [];
+  var pluginUrl = 
+ '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+  _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+  _gaq.push(['_setAccount', 'UA-2635445-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+<script>
+
+</script>	        
+
+</body>
+</html>
