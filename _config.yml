@@ -30,6 +30,8 @@ links:
     url: /about
   - title: Blog
     url: /blog
+  - title: Contact Me
+    url: /contact
 
 
 timezone:    China/Beijing
