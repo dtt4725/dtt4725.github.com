@@ -1,6 +1,6 @@
 name: DTT's Blog
 short-name: dtt4725.github.io
-description: DTT's technology blog by DTT
+description: DTT's technology blog
 url: 
 domain: http://dtt4725.github.io/
 permalink: /blog/:year/:month/:day/:title/
@@ -12,7 +12,7 @@ port: 4444
 # Author information
 owner:
   name: Tingting Dong
-  avatar: avatar.jpg
+  avatar: dtt.jpg
   bio: "QA，抠脚女汉子，热爱一切美好事物的2货处女座..."  
   email: dtt4725gmail.com 
   linkedin: Tingting Dong
