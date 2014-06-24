@@ -13,4 +13,4 @@ categories: automation
 
     script = "$('#css_element_id').css({opacity: 100});"
     page.driver.browser.execute_script script 
-{% endhignlight %}
+{% endhighlight %}
