@@ -53,7 +53,7 @@ make sure your current ruby is jruby
     unzip Sikuli-xxx-Supplemental-LinuxVisionProxy.zip 
     ./makeVisionProxy
 
-- 4.  安装sikuli jar包
+- 5.  安装sikuli jar包
 
 下载 sikuli-setup.jar (md5)：
 [https://launchpad.net/sikuli/+download](https://launchpad.net/sikuli/+download)
@@ -65,26 +65,26 @@ make sure your current ruby is jruby
 可以看看安装完了之后的log文件，里面记载了报错信息，没有报错的话才行， 他的错有时候不抛到命令行
 
 
-- 4.  安装sikuli/rukuli (rukuli是sikuli的ruby版本)
+- 6.  安装sikuli/rukuli (rukuli是sikuli的ruby版本)
 
 -
 
     gem install rukuli
 
-- 5.  把sikuli/rukuli 添加到项目的Gemfile里面
+- 7.  把sikuli/rukuli 添加到项目的Gemfile里面
 
 编辑Gemfile
 
     source 'https://rubygems.org'
     gem 'rukuli'
 
-- 6.  添加环境变量SIKULIX_HOME
+- 8.  添加环境变量SIKULIX_HOME
 
 -
     
     export SIKULIX_HOME=/path_of_sikuli-java.jar
 
-- 6.  测试代码
+- 9.  测试代码
 
 -
 
