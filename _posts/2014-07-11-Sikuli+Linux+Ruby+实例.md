@@ -78,6 +78,8 @@ make sure your current ruby is jruby
     source 'https://rubygems.org'
     gem 'rukuli'
 
+然后运行bundle
+
 - 8.  添加环境变量SIKULIX_HOME
 
 -
