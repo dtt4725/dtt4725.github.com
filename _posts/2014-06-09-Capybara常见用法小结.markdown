@@ -150,6 +150,7 @@ Capybara.default_selector = :xpath
 - 执行一段script
 
 >     page.execute_script("$('#channel_filters_scroll').css('overflow','');")
+>     page.execute_script("$('#channel_filters_scroll').click();")
 
 - 拖拽
 
