@@ -19,7 +19,6 @@ dtt4725
 ##Skype
 sandcu
 
-##<a href="http://hi.baidu.com/45920911" target="_blank">Like me?</a> 
 
 
 
