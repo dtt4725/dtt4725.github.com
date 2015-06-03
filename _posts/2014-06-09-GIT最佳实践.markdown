@@ -26,7 +26,7 @@ categories: tec
 1- create a new branch based on current branch (such as develop, see above 'Get the latest code of specific branch' )
 
     git checkout develop , then pull the latest code
-    git checkout -b tony/new_branch
+    git checkout -b tingting/new_branch
     
 
 ----------
@@ -69,8 +69,8 @@ categories: tec
 
 ###Delete the branch
 
-    git branch -d tony/new_branch
-    git branch -D tony/new_branch  (force delete)
+    git branch -d tingting/new_branch
+    git branch -D tingting/new_branch  (force delete)
 
 ###Check the status
     git status
