@@ -10,22 +10,30 @@ categories: tec
     git clone git@github.com:vitrue/sina_weibo.git
 
 ###Get the latest code of specific branch (such as develop)
-1- get changes from remote repo
 
-    git fetch
-
-2- switch to the branch you want to checkout from
+1- switch to the branch you want to checkout from
 
     git checkout develop
 
+2- get changes from remote repo
+
+    git fetch
+    git fetch origin remotebranch (only fetch specific branch)
+
 3- update develop branch to the latest code
 
-    git pull origin develop
+    git merge origin/develop
+
+4- you can do step2 and step3 in one step (not recommend)
+    git pull origin develop ( this develop branch is remote branch)
+
+5- you can also do step 1-3 in one step (not recommend)
+    git pull origin develop:develop (git pull (remote repo) (remote branch name):(local branch name))
 
 ###Usually we create a new branch based on an existing branch (such as develop)
 1- create a new branch based on current branch (such as develop, see above 'Get the latest code of specific branch' )
 
-    git checkout develop , then pull the latest code
+    git checkout develop , then pull/fetch+merge an the latest code
     git checkout -b tingting/new_branch
     
 
@@ -38,7 +46,7 @@ categories: tec
 
     git add <relative_file_path>
     or
-    git add .
+    git add . (add all changed file, not recommend)
 
 3- commit your changes to git
 
@@ -82,7 +90,21 @@ categories: tec
     git log  (get the SHA code for your desire commit)
     git reset <SHA code>
 
+
+
+###Set an tracking relationship between remote and local branch manually
+    git branch --track localtrack origin/master (new a branch named localtrack, this branch will track the remote master branch, that's mean when you do pull or push on localtrach, it will go to origin/master)
+
+    when you set the tracking relationship, you can omit the parameter of this branch of command pull/push/...
+    git pull
+    git push
+
 ----------
+
+
+###Notice the order of pull and push
+    git pull origin <remote branch>: <local branch>
+    git push origin <local branch>: <remote branch>
 
 ###Current process:
     1- push your code to github, then send pull request via GitHub
