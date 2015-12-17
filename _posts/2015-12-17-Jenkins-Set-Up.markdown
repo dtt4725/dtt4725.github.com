@@ -13,7 +13,9 @@ nohup java -jar jenkins.war > nohub.log 2>&1 &
 
 #### Plugin
 其实jenkins也没什么好说的，基本拼凑拼凑plugin自己写点脚本就能用了, 每个plugin都有自己的一套用法，我也不是全部很熟悉，这个只能随用随查了。
+
 列一下常用的plugin吧
+
 * build-name-setter 可以改build name
 * copy artifact plugin 运行一个job, 从另一个job的archive artifact里面考东西，注意jenkins 只支持master 和slave 之间的任意目录拷文件， 对于slave之间，只能从当前job访问其他job特定的archive目录， 不能从当前job拷文件到其他job
 * copy to slave plugin 支持从master考文件到slave, 以及从slave拷文件到master
@@ -27,13 +29,14 @@ nohup java -jar jenkins.war > nohub.log 2>&1 &
 
 #### Suggest
 按照浩浩的说法，尽量都在master ->系统设置里面配置
+
 * 所有的slave， 尽量用同一种配置，如果有linux和windows， 起码保证linux的都一种配置，windows的都一种配置。
 * 全局属性, 可以配置git_repo 等其他全局的属性
 * Git、Jre，Ant, Maven 按照linux/windows slave 来划分，写好名字和path(就不建议自己装了。。。毕竟工程里都是用的自带的)
 * 配置默认邮件设置和邮件服务器
 
-#### Slave安装
-* Linux
+#### Slave安装（Linux）
+
 1. 到系统管理->管理节点里，新建一个dumb Slave
 2. 启动方法选择via SSH, 填写ip和登陆用户名密码
 3. 然后会让你点个按钮装东东，装上即可，没错的话很快就能连上slave
