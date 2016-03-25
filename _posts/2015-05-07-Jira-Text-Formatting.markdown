@@ -1,12 +1,11 @@
 ---
 layout: post
-title:  "Jira Text Formatting"
-categories: others
+title:  "Set up Jenkins and start your work"
+categories: tec
 ---
 
-来思科之后配置了github，不过除了自己写写blog好像也没啥用途
-正好发现Jira高大上的用法，就来转个贴吧
-尚未清楚这种格式和markdown的关系，不过markdown这么好用，我也顺带贴一个，带实例的总是很讨巧
+好久没有写blog了，之前在学习公司的产品，自动化框架，没什么好写的。
+最近的新任务配置jenkins
 
 ## [Jira 文本编辑格式支持] (https://jira.atlassian.com/secure/WikiRendererHelpAction.jspa?section=all)
 ## [Markdown 语法] (http://www.jianshu.com/p/q81RER)
