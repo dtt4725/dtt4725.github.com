@@ -42,7 +42,7 @@ nohup java -jar jenkins.war > nohub.log 2>&1 &
 3. 然后会让你点个按钮装东东，装上即可，没错的话很快就能连上slave
 
 
-#### Someting spacial
+#### Something spacial
 * 使用Trigger parameterized build on other project的时候，如果是从jobA 调用jobB, 传的参数jobB没有定义也可以，直接可以使用
 * 因为slave中间文件交流很困难，可以把需要的东东写入文件放到master， 然后slave从master读取文件找需要的东东
 * 如果你想在一个job里的shell里面定义变量到其他地方用，那么只能写文件了。。。export啥都不管用！
