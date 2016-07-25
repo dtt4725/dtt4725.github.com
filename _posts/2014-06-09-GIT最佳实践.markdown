@@ -85,12 +85,18 @@ categories: tec
 
 ###Check log
     git log
+    git log -1 (check the latest 1 log)
+    git log --oneline (view each log in one line)
+    git whatchanged <file_path> (check the change log for specific file)
 
-###Reset file (when you want to give up all changes and let the file or commit back to origin status)
+###Reset (when you want to give up all changes and let all files back to the specific commit)
     git log  (get the SHA code for your desire commit)
     git reset <SHA code>
+    git reset --hard <SHA code> (reset to specific sha, delete all other changes in your repo)
 
-
+###Checkout file (when you want to give up the changes and let the file change back to the status in latest commit)
+    git checkout <file_name>
+    
 
 ###Set an tracking relationship between remote and local branch manually
     git branch --track localtrack origin/master (new a branch named localtrack, this branch will track the remote master branch, that's mean when you do pull or push on localtrach, it will go to origin/master)
