@@ -150,6 +150,7 @@ Capybara.default_selector = :xpath
 - 执行一段script
 
 >     page.execute_script("$('#channel_filters_scroll').css('overflow','');")
+>     page.execute_script("$('#channel_filters_scroll').click();")
 
 - 拖拽
 
@@ -239,6 +240,7 @@ Capybara.default_selector = :xpath
 >     within_fieldset – The first argument should be the id or legend attribute within a form fieldset element
 >     within_table – The first argument should be the id or caption attribute within a table element
 >     within_frame(frame_id) – The first argument should be the id value of aniframe element (selected drivers, for example, Selenium)
+>     也可以这样within_frame(find(:xpath, "//iframe[contains(@id,'app_runner_fb')]"))，这样就不需要id了
 >     within_window – The first argument should be the window handle (selected drivers for example, Selenium)
 
 
